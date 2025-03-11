@@ -7,7 +7,7 @@ const cors = require("cors");
 const authRoute = require("./src/routes/auth-route");
 const errorMiddleware = require("./src/middlewares/errorMiddleware");
 const notFound = require("./src/middlewares/notFound");
-
+const userRoute = require("./src/routes/user-route");
 // Middleware
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"));
 app.use(helmet())
@@ -16,6 +16,7 @@ app.use(express.json());
 
 //api
 app.use('/auth', authRoute)
+app.use('/auth', userRoute)
 
 // error Middleware
 app.use(errorMiddleware)

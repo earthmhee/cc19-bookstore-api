@@ -100,5 +100,6 @@ module.exports.login = tryCatch(async (req, res, next) => {
 })
 
 module.exports.getMe = (req, res) => {
+	console.log(req.user);
 	res.json({ user: req.user })
 }

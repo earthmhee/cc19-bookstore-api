@@ -83,7 +83,7 @@ module.exports.login = tryCatch(async (req, res, next) => {
 
 	// create jwt token
 
-	const payload = { id: foundUser.id }
+	const payload = { id: foundUser.id , role: foundUser.role }
 	const token = jwt.sign(payload, process.env.JWT_SECRET, { 
 		expiresIn : '30d'
 	})
@@ -94,7 +94,7 @@ module.exports.login = tryCatch(async (req, res, next) => {
 
 	const { password : pw, createdAt, updatedAt, ...userData  } = foundUser
 
-	res.json({ msg: 'Login successful', token: token, user: userData })
+	res.json({ msg: 'Login successful', token: token, user: userData})
 })
 
 module.exports.getMe = (req, res) => {
