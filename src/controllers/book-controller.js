@@ -10,14 +10,14 @@ exports.createBook = tryCatch(async (req, res, next) => {
 
   const book = await prisma.book.create({
     data: {
-      title,
-      author,
-      description,
-      stock: parseInt(stock),
-      genre,
-      price: parseFloat(price),
-      publisherId: parseInt(publisherId),
-      urlImage,
+      title: req.body.title,
+      author: req.body.author,
+      description: req.body.description,
+      stock: parseInt(req.body.stock),
+      genre: req.body.genre,
+      price: parseFloat(req.body.price),
+      publisherId: req.body.publisherId ? parseInt(req.body.publisherId) : 1, // Default to 1 if not provided
+      urlImage: req.file?.path || null, // Handle the image upload
     },
   });
 
