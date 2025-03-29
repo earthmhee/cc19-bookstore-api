@@ -8,6 +8,8 @@ const authRoute = require("./src/routes/auth-route");
 const errorMiddleware = require("./src/middlewares/errorMiddleware");
 const notFound = require("./src/middlewares/notFound");
 const userRoute = require("./src/routes/user-route");
+const bookRoute = require("./src/routes/book-route");
+const adminRoute = require('./src/routes/admin-route');
 // Middleware
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"));
 app.use(helmet())
@@ -17,6 +19,8 @@ app.use(express.json());
 //api
 app.use('/auth', authRoute)
 app.use('/auth', userRoute)
+app.use('/auth', bookRoute)
+app.use('/admin', adminRoute);
 
 // error Middleware
 app.use(errorMiddleware)
