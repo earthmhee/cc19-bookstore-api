@@ -11,7 +11,7 @@ CREATE TABLE `users` (
     `phoneNumber` VARCHAR(191) NULL,
     `urlImage` VARCHAR(191) NULL,
     `role` ENUM('USER', 'ADMIN') NOT NULL DEFAULT 'USER',
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updatedAt` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `users_username_key`(`username`),
@@ -23,7 +23,7 @@ CREATE TABLE `users` (
 CREATE TABLE `carts` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `userId` INTEGER NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
     UNIQUE INDEX `carts_userId_key`(`userId`),
     PRIMARY KEY (`id`)
@@ -43,9 +43,10 @@ CREATE TABLE `cartitems` (
 CREATE TABLE `orders` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `userId` INTEGER NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `orderDate` DATETIME(3) NOT NULL,
     `status` VARCHAR(191) NOT NULL,
+    `receiptUrl` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -55,7 +56,7 @@ CREATE TABLE `orderitems` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `bookId` INTEGER NOT NULL,
     `orderId` INTEGER NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `quantity` INTEGER NOT NULL,
     `price` DOUBLE NOT NULL,
 
@@ -73,7 +74,7 @@ CREATE TABLE `books` (
     `genre` VARCHAR(191) NOT NULL DEFAULT 'Unknown',
     `price` DOUBLE NOT NULL DEFAULT 0,
     `urlImage` VARCHAR(191) NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updatedAt` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `books_title_key`(`title`),
