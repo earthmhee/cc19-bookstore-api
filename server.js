@@ -20,6 +20,7 @@ app.use(express.json());
 app.use('/auth', authRoute)
 app.use('/auth', userRoute)
 app.use('/auth', bookRoute)
+app.use('/admin', bookRoute)
 app.use('/admin', adminRoute);
 
 // error Middleware
