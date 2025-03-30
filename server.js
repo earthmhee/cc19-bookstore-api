@@ -10,6 +10,7 @@ const notFound = require("./src/middlewares/notFound");
 const userRoute = require("./src/routes/user-route");
 const bookRoute = require("./src/routes/book-route");
 const adminRoute = require('./src/routes/admin-route');
+const orderRoute = require("./src/routes/order-route");
 // Middleware
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"));
 app.use(helmet())
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/auth', authRoute)
 app.use('/auth', userRoute)
 app.use('/auth', bookRoute)
+app.use('/auth', orderRoute)
 app.use('/admin', bookRoute)
 app.use('/admin', adminRoute);
 
